@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import Switch from "./components/Switch";
 
 function App() {
+  const { theme } = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        backgroundColor: theme === 'light' ? 'white' : 'black',
+        flex: 1,
+        height: "100vh",
+      }}
+    >
+      <Switch />
+      <h1
+        style={{
+          color: theme === 'light' ? 'black' : 'white',
+          margin: 0,
+        }}
+      >
+        hola
+      </h1>
     </div>
   );
 }
 
-export default App;
+function Root() {
+  return(
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+    
+  )
+}
+
+export default Root;
