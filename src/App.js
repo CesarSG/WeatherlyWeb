@@ -1,5 +1,4 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Switch from "./components/Switch";
 
