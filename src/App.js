@@ -1,6 +1,8 @@
 import './App.css';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
-import Switch from "./components/Switch";
+import Header from "./components/Header";
+import { ChakraProvider } from '@chakra-ui/react'
+import { images } from './utils';
 
 function App() {
   const { theme } = useTheme();
@@ -8,37 +10,25 @@ function App() {
   return (
     <div
       style={{
-        backgroundColor: theme === 'light' ? 'white' : 'black',
-        flex: 1,
+        backgroundImage: theme === 'light' ? `url(${images.bg_day})` : `url(${images.bg_night})`,
         height: "100vh",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat'
       }}
     >
-      <div className='container py-5'>
-        <div className='row'>
-          <div className='col'>
-            <Switch />
-          </div>
-          <div className='col'>
-            <h1
-                style={{
-                  color: theme === 'light' ? 'black' : 'white',
-                  margin: 0,
-                }}
-              >
-                hola
-            </h1>
-          </div>
-        </div>
-      </div>
+      <Header />
     </div>
   );
 }
 
 function Root() {
   return(
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <ChakraProvider>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </ChakraProvider>
   )
 }
 
