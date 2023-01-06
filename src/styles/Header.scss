@@ -1,0 +1,59 @@
+#header {
+
+    .btn-outline-secondary {
+        --bs-btn-color: var(--text);
+        --bs-btn-border-color: var(--text);
+        --bs-btn-hover-color: var(--btn-outline);
+        --bs-btn-hover-bg: var(--text);
+        --bs-btn-hover-border-color: var(--text);
+        --bs-btn-focus-shadow-rgb: 108,117,125;
+        --bs-btn-active-color: var(--btn-outline);
+        --bs-btn-active-bg: var(--text);
+        --bs-btn-active-border-color: var(--text);
+        --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+        --bs-btn-disabled-color: var(--text);
+        --bs-btn-disabled-bg: transparent;
+        --bs-btn-disabled-border-color: var(--text);
+        --bs-gradient: none;
+    }
+
+    .icon-span{
+        float: left;
+        margin-left: 13px;
+        margin-top: -30px;
+        position: relative;
+        z-index: 2;
+      }
+
+      input{
+        color: var(--text);
+      }
+      
+      input::-webkit-input-placeholder {
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+      
+      :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: var(--text);
+      }
+      
+      ::-ms-input-placeholder { /* Microsoft Edge */
+        color: var(--text);
+      }
+      
+      .form-check-input:checked {
+        background-color: #7157d0 !important;
+        border-color: #7157d0 !important;
+      }
+      
+      .form-control {
+        background-color: transparent !important;
+        border-color: var(--text);
+      }
+
+      p{
+        color: var(--text);
+      }
+
+}
