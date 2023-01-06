@@ -1,7 +1,8 @@
 import { ThemeProvider, useTheme } from './context/ThemeContext';
-import Header from "./components/Header";
 import { ChakraProvider } from '@chakra-ui/react'
 import { images } from './utils';
+import Header from "./components/Header";
+import Main from "./components/Main";
 
 function App() {
   const { theme } = useTheme();
@@ -19,6 +20,7 @@ function App() {
       className={themeCondition}
     >
       <Header />
+      <Main />
     </div>
   );
 }
