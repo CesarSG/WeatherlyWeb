@@ -2,11 +2,6 @@ import './App.css';
 import { ThemeProvider, useTheme } from './context/ThemeContext';
 import Switch from "./components/Switch";
 
-
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 function App() {
   const { theme } = useTheme();
 
@@ -18,26 +13,23 @@ function App() {
         height: "100vh",
       }}
     >
-
-    <Container>
-      <Row className='py-5'>
-        <Col>
-          <Switch />
-        </Col>
-        <Col>
-          <h1
-            style={{
-              color: theme === 'light' ? 'black' : 'white',
-              margin: 0,
-            }}
-          >
-            hola
-          </h1>
-        </Col>
-      </Row>
-    </Container>
-
-      
+      <div className='container py-5'>
+        <div className='row'>
+          <div className='col'>
+            <Switch />
+          </div>
+          <div className='col'>
+            <h1
+                style={{
+                  color: theme === 'light' ? 'black' : 'white',
+                  margin: 0,
+                }}
+              >
+                hola
+            </h1>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -47,7 +39,6 @@ function Root() {
     <ThemeProvider>
       <App />
     </ThemeProvider>
-    
   )
 }
 
