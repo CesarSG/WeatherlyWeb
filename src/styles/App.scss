@@ -1,0 +1,36 @@
+// Colors
+$purple: #2b1f76;
+$lightPurple: #7157d0;
+$lightPink: #eeb1fd;
+$lightLila: #9987f5;
+$lighterLila: #ae99fb;
+$darkBlue: #553bfb;
+$white: #ffffff;
+
+// Colors light
+$color__primary: #F9E900;
+$color__secondary: #F98A4F;
+$color__text: #000;
+// Colors dark
+$color__primary--dark: #000103;
+$color__secondary--dark: #515052;
+$color__text--dark: #FFFFFA;
+
+.theme{
+    --primary: #{$purple};
+    --secondary: #{$darkBlue};
+    --text: #{$purple};
+    --btn-outline: #{$white};
+}
+
+// Theme light
+.theme-dark{
+    --primary: #{$lightPurple};
+    --secondary: #{$lightLila};
+    --text: #{$white};
+    --btn-outline: #{$purple};
+}
+
+.icons{
+    color: var(--text);
+}

@@ -1,4 +1,3 @@
-import '../App.css';
 import { useTheme } from "../context/ThemeContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +8,7 @@ const Switch = () => {
   return (
     <div className='row'>
       <div className='col'>
-        <FontAwesomeIcon icon={faMoon} className='px-0'/>
+        <FontAwesomeIcon icon={faMoon} className='px-0 icons'/>
       </div>
       <div className="form-check form-switch col d-flex justify-content-end">
           <input 
@@ -21,7 +20,7 @@ const Switch = () => {
           />
       </div>
       <div className='col'>
-        <FontAwesomeIcon icon={faSun} className='px-0'/>
+        <FontAwesomeIcon icon={faSun} className='px-0 icons'/>
       </div>
     </div>
   );
