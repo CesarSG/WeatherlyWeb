@@ -1,28 +1,28 @@
 import '../App.css';
-import { COLORS } from '../utils';
 import { useTheme } from "../context/ThemeContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 
 const Switch = () => {
   const { theme, toggleTheme } = useTheme();
   return (
-    <div className="form-check form-switch">
-        <input 
-            className="form-check-input" 
-            type="checkbox" 
-            role="switch" 
-            checked={theme === "light"}
-            onChange={toggleTheme}
-        />
-        <label 
-            className="form-check-label" 
-            for="flexSwitchCheckDefault"
-            style={{
-                color: theme === 'light' ? COLORS.black : COLORS.white, 
-            }}
-        >
-                Switch for mode
-        </label>
+    <div className='row'>
+      <div className='col'>
+        <FontAwesomeIcon icon={faMoon} className='px-0'/>
+      </div>
+      <div className="form-check form-switch col d-flex justify-content-end">
+          <input 
+              className="form-check-input" 
+              type="checkbox" 
+              role="switch" 
+              checked={theme === "light"}
+              onChange={toggleTheme}
+          />
+      </div>
+      <div className='col'>
+        <FontAwesomeIcon icon={faSun} className='px-0'/>
+      </div>
     </div>
   );
 };
