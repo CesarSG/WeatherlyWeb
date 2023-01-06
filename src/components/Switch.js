@@ -1,4 +1,5 @@
 import '../App.css';
+import { COLORS } from '../utils';
 import { useTheme } from "../context/ThemeContext";
 
 
@@ -17,7 +18,7 @@ const Switch = () => {
             className="form-check-label" 
             for="flexSwitchCheckDefault"
             style={{
-                color: theme === 'light' ? 'black' : 'white', 
+                color: theme === 'light' ? COLORS.black : COLORS.white, 
             }}
         >
                 Switch for mode
