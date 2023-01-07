@@ -6,7 +6,7 @@ import { Avatar } from '@chakra-ui/react'
 
 const Header = () => {
   return (
-    <div className='container py-5' id="header">
+    <div className='container pt-5' id="header">
         <div className='row align-items-center'>
             <div className='col-4'>       
                 <button type="button" style={{ borderRadius: '50px' }} className="btn btn-outline-secondary"><FontAwesomeIcon icon={faBorderAll} /></button>
