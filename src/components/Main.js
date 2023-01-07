@@ -1,11 +1,8 @@
 import { useEffect, useReducer, useState } from "react";
-import { useTheme } from "../context/ThemeContext";
-import { API } from "../utils";
+import { API, getFormatTime } from "../utils";
 import DataReducer from "../reducer/DataReducer";
-import Loader from "./Loader";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-
+import CurrentWeather from "./CurrentWeather";
+import ForecastWeather from "./ForecastWeather";
 
 const Main = () => {
 
@@ -13,7 +10,6 @@ const Main = () => {
         data: [],
     };
 
-    const { theme, toggleTheme } = useTheme();
     const [isLoadingCurrent, setIsLoadingCurrent] = useState(true);
     const [isLoadingForecast, setIsLoadingForecast] = useState(true);
     const [city, setCity] = useState('Los Angeles')
@@ -37,36 +33,29 @@ const Main = () => {
     },[]);
 
     useEffect(() => {
+        // Update isLoading current API
         if(Object.keys(currentAPI.data).length ){
             setIsLoadingCurrent(false)
             getTimes();
-        }            
-    }, [currentAPI])
-
-    useEffect(() => {
-        console.log(forecastAPI)
+        } 
+        
+        // Update isLoading forecast API
         if(Object.keys(forecastAPI.data).length ){
             setIsLoadingForecast(false)
-            getTimes();
-        }            
+        }
+    }, )
+
+    useEffect(() => {
+        console.log(forecastAPI)             
     }, [forecastAPI])
 
     const getTimes = () => {
-        let now = new Date;
+        let now = new Date();
         //let hours = Math.abs(now - date_2) / 36e5;
 
         setSunrise(getFormatTime(currentAPI.data.sys.sunrise));
         setSunset(getFormatTime(currentAPI.data.sys.sunset));
         setTime(getFormatTime(now, true));
-    }
-
-    // Return Time in format HH:MM PM/AM
-    const getFormatTime = (dt, now = false) => {
-        let date
-        now ? date = dt : date = new Date(dt * 1000);
-        let time = date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
-
-        return time;
     }
 
     const getLocation = () => {
@@ -86,48 +75,18 @@ const Main = () => {
 
     return (
         <div id="main">
-            {isLoadingCurrent ? (
-                <Loader />
-            ) : (
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <h3>{currentAPI.data.name}</h3>
-                            <p>Today overview</p>
-                        </div>
-                        <div className="col-4">
-                            <p>Temperature: {currentAPI.data.main.temp}</p>
-                            <p>Feels like: {currentAPI.data.main.feels_like}</p>
-                            <p>Min Temp: {currentAPI.data.main.temp_min}</p>
-                            <p>Max Temp: {currentAPI.data.main.temp_max}</p>
-                            <p>Pressure: {currentAPI.data.main.pressure}</p>
-                            <p>Humidity: {currentAPI.data.main.humidity}</p>
-                        </div>
-                        <div className="col-4">
-                            <p>Main: {currentAPI.data.weather[0].main}</p>
-                            <p>Description: {currentAPI.data.weather[0].description}</p>
-
-                            <p>Wind Speed: {currentAPI.data.wind.speed}</p>
-                        </div>
-                        <div className="col-4">
-                            <p>Sunrise: {sunrise}</p>
-                            <p>Sunset: {sunset}</p>
-                            <p>Current: {time}</p>
-                        </div>
-                    </div>
-                </div>
-            )}   
-
-            {isLoadingForecast ? (<Loader />) : ( 
-                <div className="container my-5">
-                <div className="row">
-                    <div className="col-12">
-                        <h3>{forecastAPI.data.city.name}</h3>
-                        <p>Today overview</p>
-                    </div>
-                </div>
-            </div>
-            )}         
+            <CurrentWeather 
+                isLoading={isLoadingCurrent}
+                currentAPI={currentAPI}
+                sunrise={sunrise}
+                sunset={sunset}
+                time={time}
+            />  
+            <ForecastWeather 
+                isLoading={isLoadingForecast}
+                forecastAPI={forecastAPI}
+                showItems={5}
+            />         
         </div>
     );
 };
