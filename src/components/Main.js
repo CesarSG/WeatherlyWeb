@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import { API, getFormatTime } from "../utils";
+import { API, images, getFormatTime } from "../utils";
 import DataReducer from "../reducer/DataReducer";
 import CurrentWeather from "./CurrentWeather";
 import ForecastWeather from "./ForecastWeather";
@@ -67,6 +67,9 @@ const Main = () => {
         <div id="main">
             <div className="container">
                 <div className="row">
+                    <div className="col-12 my-5">
+                        <h2><img src={images.cloud_day} className="icon-name" />Weatherly</h2>
+                    </div>
                     <div className="col-8">
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
