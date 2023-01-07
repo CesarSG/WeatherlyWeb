@@ -46,7 +46,6 @@ const Main = () => {
         // Update isLoading current API
         if(Object.keys(currentAPI.data).length ){
             setIsLoadingCurrent(false)
-            getTimes();
         } 
         
         // Update isLoading forecast API
@@ -64,48 +63,32 @@ const Main = () => {
         console.log(multipleAPI)             
     }, [multipleAPI])
 
-    const getTimes = () => {
-        let now = new Date();
-        //let hours = Math.abs(now - date_2) / 36e5;
-
-        setSunrise(getFormatTime(currentAPI.data.sys.sunrise));
-        setSunset(getFormatTime(currentAPI.data.sys.sunset));
-        setTime(getFormatTime(now, true));
-    }
-
-    const getLocation = () => {
-        if (!navigator.geolocation) {
-            console.log('Geolocation is not supported by your browser');
-        } else {
-            console.log('Locating...');
-            navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position.coords.latitude);
-                console.log(position.coords.longitude);
-            }, () => {
-                console.log('Unable to retrieve your location');
-            });
-        }
-    }
-
-
     return (
         <div id="main">
-            <CurrentWeather 
-                isLoading={isLoadingCurrent}
-                currentAPI={currentAPI}
-                sunrise={sunrise}
-                sunset={sunset}
-                time={time}
-            />  
-            <ForecastWeather 
-                isLoading={isLoadingForecast}
-                forecastAPI={forecastAPI}
-                showItems={5}
-            />
-            <MultipleWeather 
-                isLoading={isLoadingMultiple}
-                multipleAPI={multipleAPI}
-            />         
+            <div className="container">
+                <div className="row">
+                    <div className="col-8">
+                        <CurrentWeather 
+                            isLoading={isLoadingCurrent}
+                            currentAPI={currentAPI}
+                            sunrise={getFormatTime(currentAPI.data.sys.sunrise)}
+                            sunset={getFormatTime(currentAPI.data.sys.sunset)}
+                            time={getFormatTime(new Date(), true)}
+                        />
+                        <ForecastWeather 
+                            isLoading={isLoadingForecast}
+                            forecastAPI={forecastAPI}
+                            showItems={5}
+                        />
+                    </div>
+                    <div className="col-4">
+                        <MultipleWeather 
+                            isLoading={isLoadingMultiple}
+                            multipleAPI={multipleAPI}
+                        /> 
+                    </div>
+                </div>
+            </div>     
         </div>
     );
 };
