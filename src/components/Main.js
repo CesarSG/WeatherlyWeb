@@ -71,9 +71,9 @@ const Main = () => {
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
                             currentAPI={currentAPI}
-                            sunrise={getFormatTime(currentAPI.data.sys.sunrise)}
-                            sunset={getFormatTime(currentAPI.data.sys.sunset)}
-                            time={getFormatTime(new Date(), true)}
+                            sunrise={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunrise)}
+                            sunset={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunset)}
+                            time={!isLoadingCurrent && getFormatTime(new Date(), true)}
                         />
                         <ForecastWeather 
                             isLoading={isLoadingForecast}
