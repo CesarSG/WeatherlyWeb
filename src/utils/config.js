@@ -10,6 +10,9 @@ export const API = {
     // API By geographic coordinates
     coordinates: 'https://api.openweathermap.org/data/2.5/weather?',
 
+    // API forecast
+    forecast: 'https://api.openweathermap.org/data/2.5/forecast?q=',
+
     // API One Call
     onecall: 'https://api.openweathermap.org/data/2.5/onecall?',
 
