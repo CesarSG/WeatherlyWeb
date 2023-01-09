@@ -23,6 +23,10 @@ export const getLocation = () => {
     }
 }
 
+export const getTemperatureFormat = (temp) => {
+    return Math.round(temp) + '°';
+}
+
 export const getImageWeather = (id) => {
     let image;
 
@@ -76,6 +80,6 @@ export const getTimes = () => {
     //let hours = Math.abs(now - date_2) / 36e5;
 }
 
-const appHelper = { getFormatTime, getLocation, getImageWeather };
+const appHelper = { getFormatTime, getLocation, getImageWeather, getTemperatureFormat };
 
 export default appHelper;

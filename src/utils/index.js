@@ -1,5 +1,5 @@
 import { API } from "./config";
-import { getFormatTime, getLocation, getImageWeather } from "./helpers"; 
+import { getFormatTime, getLocation, getImageWeather, getTemperatureFormat } from "./helpers"; 
 import { COLORS } from "./theme";
 import images from "./images";
 
@@ -10,4 +10,5 @@ export {
     getFormatTime, 
     getLocation,
     getImageWeather,
+    getTemperatureFormat,
 };
