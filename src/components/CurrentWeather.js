@@ -1,4 +1,7 @@
 import Loader from "./Loader";
+import { getImageWeather } from "../utils";
+import SelectUnit from "./SelectUnit";
+
 
 const CurrentWeather = (props) => {
 
@@ -17,11 +20,17 @@ const CurrentWeather = (props) => {
             ) : (
                 <div className="container">
                     <div className="row">
+                        <div className="col-8">
+                            <h3>{currentAPI.data.name}</h3> 
+                        </div>
+                        <div className="col-3">
+                            <SelectUnit />
+                        </div>
                         <div className="col-12">
-                            <h3>{currentAPI.data.name}</h3>
                             <p>Today overview</p>
                         </div>
                         <div className="col-4">
+                            <img alt={currentAPI.data.weather[0].main} src={getImageWeather(currentAPI.data.weather[0].icon)} />
                             <p>Temperature: {currentAPI.data.main.temp}</p>
                             <p>Feels like: {currentAPI.data.main.feels_like}</p>
                             <p>Min Temp: {currentAPI.data.main.temp_min}</p>
