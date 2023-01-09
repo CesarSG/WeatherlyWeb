@@ -1,6 +1,6 @@
 import Switch from './Switch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBorderAll, faBell, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faBorderAll, faBell, faLocationDot, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Avatar } from '@chakra-ui/react'
 
 
@@ -17,7 +17,7 @@ const Header = () => {
                 <form>
                     <div className="mb-0">
                         <input type="text" className="form-control px-5" style={{ borderRadius: '20px'}} placeholder='Search city...'/>
-                        <span className='icon-span icons'><FontAwesomeIcon icon={faLocationDot} className='px-1'/></span>
+                        <span className='icon-span icons'><FontAwesomeIcon icon={faMagnifyingGlass} className='px-1'/></span>
                     </div>
                 </form>
             </div>
