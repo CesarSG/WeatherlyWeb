@@ -8,10 +8,15 @@ const Switch = () => {
         let value = event.nativeEvent.target.value;
         toggleUnit(value);
     }
+
     return (
-        <Select onChange={handleSelect} className="select-unit">
-            <option value='imperial' defaultValue={unit === "imperial"}>Fahrenheit</option>
-            <option value='metric' defaultValue={unit === "metric"}>Celsius</option>
+        <Select 
+            onChange={handleSelect} 
+            className="select-unit"
+            value={unit}
+        >
+            <option value='imperial'>Fahrenheit</option>
+            <option value='metric'>Celsius</option>
         </Select>
     );
 };
