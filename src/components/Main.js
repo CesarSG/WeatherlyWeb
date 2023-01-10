@@ -76,8 +76,8 @@ const Main = () => {
     }, [currentAPI, forecastAPI, multipleAPI])
 
     useEffect(() => {
-        console.log(forecastAPI)             
-    }, [forecastAPI])
+        console.log(currentAPI)             
+    }, [currentAPI])
 
     return (
         <div id="main">
@@ -90,15 +90,12 @@ const Main = () => {
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
                             currentAPI={currentAPI}
-                            sunrise={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(currentAPI.data.sys.sunrise)}
-                            sunset={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(currentAPI.data.sys.sunset)}
-                            time={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(new Date(), true)}
                         />
-                        <ForecastWeather 
+                        {<ForecastWeather 
                             isLoading={isLoadingForecast}
                             forecastAPI={forecastAPI}
                             showItems={5}
-                        />
+                        />}
                     </div>
                     <div className="col-4">
                         <MultipleWeather 
