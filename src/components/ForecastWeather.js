@@ -12,7 +12,7 @@ const ForecastWeather = (props) => {
 
     return (
         <>
-            { isLoading ? (<Loader />) : ( 
+            { !isLoading && forecastAPI.data.cod === '200' ? (
                 <div className="container my-5">
                     <div className="row">
                         <div className="col-12">
@@ -30,6 +30,11 @@ const ForecastWeather = (props) => {
                         </div>
                     </div>
                 </div>
+                
+            ) : ( 
+                <>
+                    {forecastAPI.data.hasOwnProperty('cod') && <Loader />}                  
+                </>
             )}
         </>
     );

@@ -22,6 +22,26 @@ const Main = () => {
     const [multipleAPI, dispatchMultiple] = useReducer(DataReducer, initialState);
 
     useEffect(() => {
+        // Set loader as true
+        setIsLoadingCurrent(true);
+        setIsLoadingForecast(true);
+
+        fetch(API.current + city + API.units + unit + API.id + API.key)
+            .then((response) => response.json())
+            .then((data) => dispatchCurrent({ payload: data }))
+            .catch((error) => console.log("Current: " + error))
+
+        fetch(API.forecast + city + API.units + unit + API.id + API.key)
+            .then((response) => response.json())
+            .then((data) => dispatchForecast({ payload: data }))
+            .catch((error) => console.log("Forecast: " + error))
+    },[city]);
+
+    useEffect(() => {
+        // Set loader as true
+        setIsLoadingCurrent(true);
+        setIsLoadingForecast(true);
+
         fetch(API.current + city + API.units + unit + API.id + API.key)
             .then((response) => response.json())
             .then((data) => dispatchCurrent({ payload: data }))
@@ -36,7 +56,7 @@ const Main = () => {
             .then((response) => response.json())
             .then((data) => dispatchMultiple({ payload: data }))
             .catch((error) => console.log("Multiple: " + error))
-    },[unit, city]);
+    },[unit]);
 
     useEffect(() => {
         // Update isLoading current API
@@ -56,8 +76,8 @@ const Main = () => {
     }, [currentAPI, forecastAPI, multipleAPI])
 
     useEffect(() => {
-        console.log(multipleAPI)             
-    }, [multipleAPI])
+        console.log(forecastAPI)             
+    }, [forecastAPI])
 
     return (
         <div id="main">
@@ -70,9 +90,9 @@ const Main = () => {
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
                             currentAPI={currentAPI}
-                            sunrise={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunrise)}
-                            sunset={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunset)}
-                            time={!isLoadingCurrent && getFormatTime(new Date(), true)}
+                            sunrise={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(currentAPI.data.sys.sunrise)}
+                            sunset={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(currentAPI.data.sys.sunset)}
+                            time={!isLoadingCurrent && currentAPI.data.cod === 200 && getFormatTime(new Date(), true)}
                         />
                         <ForecastWeather 
                             isLoading={isLoadingForecast}

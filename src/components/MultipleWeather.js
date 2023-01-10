@@ -1,6 +1,5 @@
 import Loader from "./Loader";
 import { getImageWeather, getTemperatureFormat } from "../utils";
-import { Fragment } from "react";
 
 const MultipleWeather = (props) => {
 
@@ -12,7 +11,7 @@ const MultipleWeather = (props) => {
     return (
         <>
             { isLoading ? (<Loader />) : ( 
-                <Fragment>
+                <div className="mb-5 pb-5">
                     <h3>Other cities</h3>
                     {multipleAPI.data.list.map((item, index) => {
                         return (
@@ -26,7 +25,7 @@ const MultipleWeather = (props) => {
                                 <div className="col-4 px-1">
                                     <p>{item.sys.country}</p>
                                     <p>{item.name}</p>
-                                    <p>Real feel: {item.main.feels_like}°</p>
+                                    <p>Real feel: {getTemperatureFormat(item.main.feels_like)}</p>
                                     <p>{item.weather[0].description}</p>
                                 </div>
                                 <div className="col-4 d-flex text-center align-items-center justify-content-center">
@@ -35,7 +34,7 @@ const MultipleWeather = (props) => {
                             </div>
                         )
                     })}
-                </Fragment>
+                </div>
             )}
         </>
     );

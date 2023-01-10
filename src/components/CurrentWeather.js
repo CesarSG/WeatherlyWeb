@@ -1,6 +1,7 @@
 import Loader from "./Loader";
 import { getImageWeather } from "../utils";
 import SelectUnit from "./SelectUnit";
+import { useTheme } from "../context/ThemeContext"
 
 
 const CurrentWeather = (props) => {
@@ -13,11 +14,11 @@ const CurrentWeather = (props) => {
         time,
     } = props;
 
+    const { city } = useTheme();
+
     return (
         <>
-            { isLoading ? (
-                <Loader />
-            ) : (
+            { !isLoading && currentAPI.data.cod === 200 ? (
                 <div className="container">
                     <div className="row">
                         <div className="col-8">
@@ -51,6 +52,18 @@ const CurrentWeather = (props) => {
                         </div>
                     </div>
                 </div>
+            ) : (
+                <>
+                    {!currentAPI.data.hasOwnProperty('cod') ? 
+                    (<Loader />) : (
+                        <div className="d-flex justify-content-center my-5">
+                            <div className="text-center">
+                                <p>{currentAPI.data.message}</p>
+                                <p><b>{city}</b></p>
+                            </div>
+                        </div>
+                    ) }                    
+                </>
             )} 
         </>
     );
