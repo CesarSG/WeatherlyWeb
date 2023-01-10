@@ -1,5 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import { API, images, getFormatTime } from "../utils";
+import { useTheme } from "../context/ThemeContext";
 import DataReducer from "../reducer/DataReducer";
 import CurrentWeather from "./CurrentWeather";
 import ForecastWeather from "./ForecastWeather";
@@ -11,6 +12,8 @@ const Main = () => {
         data: [],
     };
 
+    const { unit, city } = useTheme();
+
     const [isLoadingCurrent, setIsLoadingCurrent] = useState(true);
     const [isLoadingForecast, setIsLoadingForecast] = useState(true);
     const [isLoadingMultiple, setIsLoadingMultiple] = useState(true);
@@ -18,14 +21,27 @@ const Main = () => {
     const [forecastAPI, dispatchForecast] = useReducer(DataReducer, initialState);
     const [multipleAPI, dispatchMultiple] = useReducer(DataReducer, initialState);
 
-    const [city, setCity] = useState('Los Angeles')
-    const [time, setTime] = useState('');
-    const [sunrise, setSunrise] = useState('');
-    const [sunset, setSunset] = useState('');
-    const [unit, setUnit] = useState('imperial')
-    
+    useEffect(() => {
+        // Set loader as true
+        setIsLoadingCurrent(true);
+        setIsLoadingForecast(true);
+
+        fetch(API.current + city + API.units + unit + API.id + API.key)
+            .then((response) => response.json())
+            .then((data) => dispatchCurrent({ payload: data }))
+            .catch((error) => console.log("Current: " + error))
+
+        fetch(API.forecast + city + API.units + unit + API.id + API.key)
+            .then((response) => response.json())
+            .then((data) => dispatchForecast({ payload: data }))
+            .catch((error) => console.log("Forecast: " + error))
+    },[city]);
 
     useEffect(() => {
+        // Set loader as true
+        setIsLoadingCurrent(true);
+        setIsLoadingForecast(true);
+
         fetch(API.current + city + API.units + unit + API.id + API.key)
             .then((response) => response.json())
             .then((data) => dispatchCurrent({ payload: data }))
@@ -40,7 +56,7 @@ const Main = () => {
             .then((response) => response.json())
             .then((data) => dispatchMultiple({ payload: data }))
             .catch((error) => console.log("Multiple: " + error))
-    },[]);
+    },[unit]);
 
     useEffect(() => {
         // Update isLoading current API
@@ -57,32 +73,29 @@ const Main = () => {
         if(Object.keys(multipleAPI.data).length ){
             setIsLoadingMultiple(false)
         }
-    }, )
+    }, [currentAPI, forecastAPI, multipleAPI])
 
     useEffect(() => {
-        console.log(multipleAPI)             
-    }, [multipleAPI])
+        console.log(currentAPI)             
+    }, [currentAPI])
 
     return (
         <div id="main">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 my-5">
-                        <h2><img src={images.cloud_day} className="icon-name" />Weatherly</h2>
+                    <div className="col-12 mt-3 mb-4">
+                        <h2><img alt="icon weatherly" src={images.cloud_day} className="icon-name" />Weatherly</h2>
                     </div>
                     <div className="col-8">
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
                             currentAPI={currentAPI}
-                            sunrise={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunrise)}
-                            sunset={!isLoadingCurrent && getFormatTime(currentAPI.data.sys.sunset)}
-                            time={!isLoadingCurrent && getFormatTime(new Date(), true)}
                         />
-                        <ForecastWeather 
+                        {<ForecastWeather 
                             isLoading={isLoadingForecast}
                             forecastAPI={forecastAPI}
                             showItems={5}
-                        />
+                        />}
                     </div>
                     <div className="col-4">
                         <MultipleWeather 

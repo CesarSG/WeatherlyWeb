@@ -18,6 +18,37 @@
         display: inline;
     }
 
+    .bg-card {
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    .form-select{
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--text);
+    }
+
+    select{
+        border-color: var(--text);
+    }
+
+    p {
+        text-transform: capitalize;
+    }
+
+    #current {
+        .main-temp {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+        .description {
+            font-size: 1.5rem;
+        }
+    }
+
     
 }
 

@@ -14,7 +14,7 @@ export const API = {
     forecast: 'https://api.openweathermap.org/data/2.5/forecast?q=',
 
     // API for multiple locations
-    multiple: 'https://api.openweathermap.org/data/2.5/group?id=524901,703448,2643743',
+    multiple: 'https://api.openweathermap.org/data/2.5/group?id=5128581,2968815,2643743,1816670',
 
     // API One Call
     onecall: 'https://api.openweathermap.org/data/2.5/onecall?',

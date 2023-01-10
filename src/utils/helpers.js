@@ -1,3 +1,5 @@
+import { images } from '../utils';
+
 // Return Time in format HH:MM PM/AM
 export const getFormatTime = (dt, now = false) => {
     let date
@@ -21,10 +23,63 @@ export const getLocation = () => {
     }
 }
 
+export const getTemperatureFormat = (temp) => {
+    return Math.round(temp) + '°';
+}
+
+export const getImageWeather = (id) => {
+    let image;
+
+    switch (id) {
+        case '01d':
+            image = images.clear_day;
+            break;
+        case '01n':
+            image = images.clear_night;
+            break;
+        case '02d':
+            image = images.few_cloud_day;
+            break;
+        case '02n':
+            image = images.few_cloud_night;
+            break;
+        case '03d':
+        case '04d':
+            image = images.cloud_day;
+            break;
+        case '03n':
+        case '04n':
+            image = images.cloud_night;
+            break;
+        case '09d':
+        case '09n':
+            image = images.rain;
+            break;
+        case '10d':
+        case '10n':
+        case '11d':
+        case '11n':
+            image = images.thunderstorm;
+            break;
+        case '50d':
+            image = images.few_cloud_day;
+            break;
+        case '50n':
+            image = images.few_cloud_night;
+            break;
+    
+        default:
+            image = images.clear_day;
+            break;
+    }
+
+    return image;
+}
+
 export const getTimes = () => {
     //let hours = Math.abs(now - date_2) / 36e5;
 }
 
-const appHelper = { getFormatTime, getLocation };
+const appHelper = { getFormatTime, getLocation, getImageWeather, getTemperatureFormat };
 
 export default appHelper;

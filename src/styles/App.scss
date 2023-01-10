@@ -21,6 +21,16 @@ $color__text--dark: #FFFFFA;
     --secondary: #{$darkBlue};
     --text: #{$purple};
     --btn-outline: #{$white};
+
+    background-image: url('../assets/bg/BG-Day.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+    background-color: $purple;
+
+    @media only screen and (max-width: 600px) {
+        background-size: cover;
+    }
 }
 
 // Theme light
@@ -29,6 +39,15 @@ $color__text--dark: #FFFFFA;
     --secondary: #{$lightLila};
     --text: #{$white};
     --btn-outline: #{$purple};
+
+    background-image: url('../assets/bg/BG-Night.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat;
+
+    @media only screen and (max-width: 600px) {
+        background-size: cover;
+    }
 }
 
 .icons{

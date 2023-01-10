@@ -4,14 +4,24 @@ const ThemeContext = createContext(undefined);
 
 export const ThemeProvider = ({children}) => {
     const [theme, setTheme] = useState('light');
+    const [unit, setUnit] = useState('imperial');
+    const [city, setCity] = useState('Fort Worth');
 
     const toggleTheme = () => {
         theme === 'light' ? setTheme('dark') : setTheme('light');
     }
+    const toggleUnit = (units) => {
+        units !== 'imperial' ? setUnit('metric') : setUnit('imperial');
+    }
+    const toggleCity = (selectCity) => {
+        if(city !== selectCity){
+            setCity(selectCity)
+        }
+    }
 
     return (
         <ThemeContext.Provider
-            value={{ theme, toggleTheme }}
+            value={{ theme, unit, city, toggleTheme, toggleUnit, toggleCity }}
         >
             {children}
         </ThemeContext.Provider>
