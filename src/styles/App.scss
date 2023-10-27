@@ -23,12 +23,9 @@ $color__text--dark: #FFFFFA;
     --btn-outline: #{$white};
 
     background-image: url('../assets/bg/BG-Day.png');
-    background-position: center;
     background-size: contain;
-    background-repeat: repeat;
-    background-color: $purple;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 665px) {
         background-size: cover;
     }
 }
@@ -41,11 +38,9 @@ $color__text--dark: #FFFFFA;
     --btn-outline: #{$purple};
 
     background-image: url('../assets/bg/BG-Night.png');
-    background-position: center;
     background-size: contain;
-    background-repeat: repeat;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 665px) {
         background-size: cover;
     }
 }
