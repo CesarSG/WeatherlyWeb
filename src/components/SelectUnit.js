@@ -14,6 +14,7 @@ const Switch = () => {
             onChange={handleSelect} 
             className="select-unit"
             value={unit}
+            style={{ borderRadius: '20px'}}
         >
             <option value='imperial'>Fahrenheit</option>
             <option value='metric'>Celsius</option>
