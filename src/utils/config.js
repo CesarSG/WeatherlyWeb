@@ -1,7 +1,7 @@
 export const API = {
 
     // API key
-    key: '598292ec4574045b19d00371177cd2ea',
+    key: process.env.REACT_APP_API_KEY_OPENWEATHERMAP,
     id: '&appid=',
 
     // API current wheather
