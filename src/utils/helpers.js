@@ -1,12 +1,19 @@
 import { images } from '../utils';
+import moment from "moment";
+
 
 // Return Time in format HH:MM PM/AM
 export const getFormatTime = (dt, now = false) => {
     let date
-    now ? date = dt : date = new Date(dt * 1000);
+    now ? date = dt : date = new Date((dt) * 1000);
     let time = date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
 
     return time;
+}
+
+export const getFormatTimeTimezone = (dt, timezone) => {
+
+    return moment.unix(dt).utc().add(timezone, 's').format('hh:mm A');
 }
 
 export const getLocation = () => {

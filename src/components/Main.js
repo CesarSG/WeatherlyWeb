@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react";
-import { API, images, getFormatTime } from "../utils";
+import { API } from "../utils";
 import { useTheme } from "../context/ThemeContext";
 import DataReducer from "../reducer/DataReducer";
 import CurrentWeather from "./CurrentWeather";
@@ -82,11 +82,8 @@ const Main = () => {
     return (
         <div id="main">
             <div className="container">
-                <div className="row">
-                    <div className="col-12 mt-3 mb-4">
-                        <h2><img alt="icon weatherly" src={images.cloud_day} className="icon-name" />Weatherly</h2>
-                    </div>
-                    <div className="col-8">
+                <div className="row py-5">
+                    <div className="col-12 col-lg-8">
                         <CurrentWeather 
                             isLoading={isLoadingCurrent}
                             currentAPI={currentAPI}
@@ -97,7 +94,7 @@ const Main = () => {
                             showItems={5}
                         />}
                     </div>
-                    <div className="col-4">
+                    <div className="col-12 col-lg-4">
                         <MultipleWeather 
                             isLoading={isLoadingMultiple}
                             multipleAPI={multipleAPI}

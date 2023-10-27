@@ -12,12 +12,6 @@
         font-weight: 800;
     }
 
-    .icon-name {
-        height: 1.5em;
-        width: auto;
-        display: inline;
-    }
-
     .bg-card {
         border-radius: 1rem;
         background: rgba(255, 255, 255, 0.2);
@@ -46,6 +40,20 @@
         }
         .description {
             font-size: 1.5rem;
+        }
+        .item-data {
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+    }
+
+    #forecast {
+        .forecast-text{
+            font-size: 1.3rem;
+        }
+        .temp {
+            font-size: 1.2rem;
+            font-weight: 800;
         }
     }
 
