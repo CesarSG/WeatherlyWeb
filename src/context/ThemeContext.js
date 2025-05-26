@@ -5,7 +5,7 @@ const ThemeContext = createContext(undefined);
 export const ThemeProvider = ({children}) => {
     const [theme, setTheme] = useState('light');
     const [unit, setUnit] = useState('imperial');
-    const [city, setCity] = useState('Los Angeles');
+    const [city, setCity] = useState('Grapevine');
 
     const toggleTheme = () => {
         theme === 'light' ? setTheme('dark') : setTheme('light');
