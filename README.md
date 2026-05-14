@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Weatherly
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive weather dashboard built with React 18, JavaScript, and SCSS. Fetches live weather data from the Open-Meteo API — no API key required.
 
-## Available Scripts
+**Live Demo:** https://CesarSG.github.io/WeatherlyWeb/
 
-In the project directory, you can run:
+![Weatherly App](.github/assets/app.png)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Live weather data** — current conditions fetched from the Open-Meteo API via geocoding + forecast endpoints
+- **Current conditions** — temperature, real feel, min/max, humidity, pressure, wind speed, sunrise & sunset
+- **Hourly forecast** — next 5 hours with weather icon and temperature
+- **Multi-city panel** — simultaneous weather cards for New York, Paris, and London
+- **City search** — look up any city by name with error handling for invalid inputs
+- **Unit toggle** — switch between Fahrenheit/Celsius (°F / °C) and mph/km/h
+- **Dark/light mode** — full theme switch with day and night background imagery
+- **Animated transitions** — smooth UI animations via Framer Motion
+- **Responsive layout** — mobile-first grid using Bootstrap, adapts from phone to desktop
 
-### `npm test`
+## Tech Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Layer | Technology |
+|---|---|
+| UI framework | React 18 |
+| Language | JavaScript (JSX) |
+| Styling | SCSS + Bootstrap 5 |
+| Component library | Chakra UI, React-Bootstrap |
+| Animations | Framer Motion |
+| Icons | Font Awesome 6 |
+| Build tool | Vite |
+| Weather API | Open-Meteo (free, no key) |
+| Date formatting | Moment.js |
 
-### `npm run build`
+## Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+npm run start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Other commands
 
-### `npm run eject`
+```bash
+npm run build    # Production build
+npm run preview  # Preview the production build locally
+npm run lint     # Run ESLint
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Project Structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+src/
+├── components/
+│   ├── CurrentWeather.jsx   # Current conditions panel
+│   ├── ForecastWeather.jsx  # Hourly forecast cards
+│   ├── MultipleWeather.jsx  # Multi-city sidebar
+│   ├── Header.jsx           # Search bar and theme toggle
+│   ├── SelectUnit.jsx       # °F / °C unit switcher
+│   ├── Switch.jsx           # Dark/light mode toggle
+│   └── Loader.jsx           # Loading spinner
+├── context/
+│   └── ThemeContext.jsx     # Global theme, unit, and city state
+├── hooks/
+│   └── useWeather.js        # Data fetching logic (current, forecast, multi-city)
+├── reducer/
+│   └── DataReducer.js       # useReducer handler for API state
+├── utils/
+│   ├── config.js            # API endpoints and preset cities
+│   ├── helpers.js           # Temperature formatting and time utilities
+│   ├── images.js            # WMO weather code → icon mapping
+│   └── theme.js             # Theme helpers
+├── styles/                  # Per-component SCSS modules
+└── assets/                  # Weather icons and day/night backgrounds
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](LICENSE)
