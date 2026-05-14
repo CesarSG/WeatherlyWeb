@@ -87,6 +87,45 @@ export const getTimes = () => {
     //let hours = Math.abs(now - date_2) / 36e5;
 }
 
+export const wmoToIcon = (code, isDay) => {
+    const s = isDay ? 'd' : 'n';
+    if (code === 0)  return `01${s}`;
+    if (code <= 2)   return `02${s}`;
+    if (code === 3)  return `04${s}`;
+    if (code <= 48)  return `50${s}`;
+    if (code <= 57)  return `09${s}`;
+    if (code <= 67)  return `10${s}`;
+    if (code <= 77)  return `13${s}`;
+    if (code <= 82)  return `09${s}`;
+    if (code <= 86)  return `13${s}`;
+    return `11${s}`;
+};
+
+export const wmoToMain = (code) => {
+    if (code === 0) return 'Clear';
+    if (code <= 3)  return 'Clouds';
+    if (code <= 48) return 'Fog';
+    if (code <= 67) return 'Rain';
+    if (code <= 77) return 'Snow';
+    if (code <= 82) return 'Rain';
+    if (code <= 86) return 'Snow';
+    return 'Thunderstorm';
+};
+
+export const wmoToDescription = (code) => {
+    if (code === 0) return 'clear sky';
+    if (code === 1) return 'mainly clear';
+    if (code === 2) return 'partly cloudy';
+    if (code === 3) return 'overcast';
+    if (code <= 48) return 'foggy';
+    if (code <= 55) return 'drizzle';
+    if (code <= 67) return 'rain';
+    if (code <= 77) return 'snow';
+    if (code <= 82) return 'rain showers';
+    if (code <= 86) return 'snow showers';
+    return 'thunderstorm';
+};
+
 const appHelper = { getFormatTime, getLocation, getImageWeather, getTemperatureFormat };
 
 export default appHelper;
