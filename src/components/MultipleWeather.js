@@ -10,7 +10,7 @@ const MultipleWeather = (props) => {
 
     return (
         <>
-            { isLoading ? (<Loader />) : ( 
+            { isLoading ? (<Loader />) : !multipleAPI.data.list ? null : (
                 <div className="mb-5 pb-5 mx-3">
                     <h3>Other cities</h3>
                     <div className="row py-5">
