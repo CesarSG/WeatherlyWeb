@@ -1,42 +1,12 @@
 export const API = {
-
-    // API key
-    key: process.env.REACT_APP_API_KEY_OPENWEATHERMAP,
-    id: '&appid=',
-
-    // API current wheather
-    current: 'https://api.openweathermap.org/data/2.5/weather?q=',
-
-    // API By geographic coordinates
-    coordinates: 'https://api.openweathermap.org/data/2.5/weather?',
-
-    // API forecast
-    forecast: 'https://api.openweathermap.org/data/2.5/forecast?q=',
-
-    // API for multiple locations
-    multiple: 'https://api.openweathermap.org/data/2.5/group?id=5128581,2968815,2643743',
-
-    // API One Call
-    onecall: 'https://api.openweathermap.org/data/2.5/onecall?',
-
-    // API configurations
-    units: '&units=',
-    lang: '&lang=',
-
-    lat: 'lat=',
-    lon: '&lon=',
-    exclude: '&exclude=',
-
-    // Example construction url for api
-
-    // API current wheather
-    // current + {city} + units + {unit} + lang + {language} + id + key
-
-    // API One Call
-    // onecall + lat + {latitude} + lon + {longitude} + exclude + {'minutely'} + id + key 
-    
+    geocoding: 'https://geocoding-api.open-meteo.com/v1/search',
+    weather: 'https://api.open-meteo.com/v1/forecast',
+    cities: [
+        { name: 'New York', country: 'US', lat: 40.7128, lon: -74.0060 },
+        { name: 'Paris',    country: 'FR', lat: 48.8566, lon: 2.3522  },
+        { name: 'London',   country: 'GB', lat: 51.5074, lon: -0.1278 },
+    ],
 };
 
 const appConfig = { API };
-
 export default appConfig;
