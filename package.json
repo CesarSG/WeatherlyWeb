@@ -1,5 +1,6 @@
 {
   "name": "weatherly-web",
+  "homepage": "https://CesarSG.github.io/WeatherlyWeb/",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -16,6 +17,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
     "framer-motion": "^8.1.9",
+    "gh-pages": "^6.3.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
@@ -25,8 +27,10 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
+    "lint": "eslint .",
     "preview": "vite preview",
-    "lint": "eslint ."
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
