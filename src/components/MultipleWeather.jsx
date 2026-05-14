@@ -16,8 +16,8 @@ const MultipleWeather = (props) => {
                     <div className="row py-5">
                     {multipleAPI.data.list.map((item, index) => {
                         return (
-                            <div className="col-12 col-md-6 col-lg-12 px-2 px-md-4 px-lg-1">
-                                <div key={index} className="my-3 py-4 bg-card row">
+                            <div key={index} className="col-12 col-md-6 col-lg-12 px-2 px-md-4 px-lg-1">
+                                <div  className="my-3 py-4 bg-card row">
                                     <div className="col-4 text-center d-flex text-center align-items-center">
                                         <div>
                                             <img alt={item.weather[0].description} className="px-2" src={getImageWeather(item.weather[0].icon)} />

@@ -1,3 +1,8 @@
+@use './styles/App.scss';
+@use './styles/Header.scss';
+@use './styles/Main.scss';
+@use './styles/Loader.scss';
+
 @font-face {
   font-family: Andes-Rounded;
   src: url(./assets/fonts/Andes-Rounded.otf);
@@ -13,16 +18,3 @@ body {
 #root{
   font-family: 'Andes-Rounded';
 }
-
-//Import of sections
-@import './styles/App.scss';
-@import './styles/Header.scss';
-@import './styles/Main.scss';
-@import './styles/Loader.scss';
-
-  
-  
-  
-  
-
-
